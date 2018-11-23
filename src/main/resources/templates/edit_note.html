@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>My Notes</title>
+
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" type="text/css" rel="stylesheet">
+
+</head>
+<body class="home">
+<header id="header">
+	<div class="container">
+		<div id="mySidenav" class="sidenav">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<a href="" th:href="@{/editProfile}" class="text-center">Edit Profile</a>
+			<a href="" th:href="@{/index}" class="text-center">Add New Note</a>
+			<a href="" th:href="@{/list}" class="text-center">My Notes</a>
+			<a href="" th:href="@{/logout}" class="text-center"> Logout</a>
+
+
+		</div>
+		<!-- Use any element to open the sidenav -->
+		<span onclick="openNav()" class="pull-right menu-icon">☰</span>
+	</div>
+</header>
+<div class="container-fluid col-md-12 row">
+
+	<!--- left panel -->
+	<div class="col-md-3 leftPanel length highlight">
+
+					<span class="effect">
+
+						<div class="col-md-12 topAlign text-center white">
+							<h1 class="white"><span class="glyphicon glyphicon-trash"></span>Notes</h1>
+							<b class="white">Writing made digital</b>
+						</div>
+
+					</span>
+	</div>
+	<!---end of left panel -->
+
+	<!--- right panel -->
+	<div class="col-md-7 topAlign1">
+
+		<h1 id="outlook" class="white"><b> e-Notes </b></h1>
+
+		<hr>
+
+		<span id="error"> </span>
+		<form class="well well-sm shade" style="background-color: yellowgreen;" method='post' action="/update" th:action="@{/update}" th:object="${note}">
+			<span th:if="${categoryAdded} == true">Category Added</span>
+				<div class="row">
+				<fieldset>
+					<legend class="center-block text-center" th:text="${note.noteId}"></legend>
+					<div class="form-group">
+						<label class="control-label col-md-2" for="title"> *Title </label>
+						<div class="input-group col-md-8">
+							<input type="hidden" th:value="${note.noteId}" name="NoteId"/>
+							<input type="hidden" th:value="${user}"/>
+							<input type="text" class="form-control" th:field="*{title}" name="title" id="title" placeholder="title" required />
+							<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="alert-danger"> </span>
+							<span class="help-block">Title of the note </span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-2" for="content"> *Notes </label>
+						<div class="input-group col-md-8">
+							<textarea name="content" rows="five" th:field="*{content}" class="form-control" placeholder="notes"></textarea>
+							<span class="help-block">Your content here </span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-2" for="category"> *Category </label>
+						<div class="input-group col-md-8">
+							<select name="category" required class="form-control">
+								<!--<div th:if="${#fields.hasErrors('noteCategory')}" th:errors="*{noteCategory}"></div>-->
+								<option value="" selected="selected" disabled> Please select an option... </option>
+								<option th:value="${Category.id}" th:text="${Category.category}" th:each="Category : ${noteCategoryList}" value="categories"></option>
+							</select>
+							<!--<a th:href="@{/addCategory}" class="btn btn-danger col-md-offset-12" style="margin-top: -55px;"><span class="glyphicon glyphicon-plus-sign">Add</span></a>-->
+							<div class="text-danger">Please enter a category</div>
+						</div>
+					</div>
+					<div class="form-group col-md-offset-4 col-md-4">
+						<a ><input type="submit" class="btn btn-success btn-block" id="add" value="Edit note"/></a>
+					</div>
+				</fieldset>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!--- footer -->
+<div class="text-center topAlign2">
+	<i class="white">Designed by leyeseyi edited by Tk codes</i>
+</div>
+<!--- end of footer -->
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/custom2.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+*{
+	box-sizing:border-box;
+	margin:0px;
+	padding:0px;
+	
+}
+body#login{
+	
+	background:url('../images/2.jpg');
+}
+body.home{
+	
+	background:url('../images/notes.jpeg');
+	
+}
+.login-section{
+	margin-top:5%;
+}
+
+/* side nav section */
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #f1f1f1;
+    display: block;
+    transition: 0.3s
+}
+.sidenav a:hover, .offcanvas a:focus{
+    color: lightblue;
+}
+.closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px !important;
+    margin-left: 50px;
+}
+.menu-icon
+{
+    color: #fff;
+    font-size: 30px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+/* close side nav section */
+
+.white{
+	color:black;
+}

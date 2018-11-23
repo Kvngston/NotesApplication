@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Notes</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+
+</head>
+<body class="home">
+<header id="header">
+    <div class="container">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="img-responsive img-circle">
+                <img style="height: 150px;" class="img-circle img-responsive center-block" th:src="@{'/images/profileImages/'+${ProfileImage.profileImage}}"/>
+            </div>
+            <a href="" th:href="@{/editProfile}" class="text-center">Edit Profile</a>
+            <a href="" th:href="@{/index}" class="text-center">Add New Note</a>
+            <a href="" th:href="@{/list}" class="text-center">My Notes</a>
+            <a href="" th:href="@{/logout}" class="text-center"> Logout</a>
+
+
+        </div>
+        <!-- Use any element to open the sidenav -->
+        <span onclick="openNav()" class="pull-right menu-icon">☰</span>
+    </div>
+</header>
+<div class="container-fluid col-md-12 row">
+
+    <!--- left panel -->
+    <div class="col-md-3 leftPanel length highlight">
+					<span class="effect">
+
+						<div class="col-md-12 topAlign text-center white">
+							<h1 class="white"><span class="glyphicon glyphicon-trash"></span>Notes</h1>
+							<b class="white">Writing made digital</b>
+						</div>
+
+					</span>
+    </div>
+    <!---end of left panel -->
+
+    <!--- right panel -->
+    <div class="col-md-7 topAlign1">
+
+        <h1 id="outlook" class="white"><b> e-Notes </b></h1>
+
+        <hr>
+        <span th:if="${saveSuccess} == true">Save Successful</span>
+        <span id="error"> </span>
+        <div class="jumbotron">
+            <form class="well well-sm shade" method='post' action="/addCategory" th:action="@{/addCategory}" th:object="${noteCategory}">
+                <fieldset>
+                    <legend class="center-block text-center"> Add a New Category </legend>
+                    <div class="form-group">
+                        <label for="Add Category">Category</label>
+                        <input type="text" class="form-control" name="category"/>
+
+                    </div>
+                    <div class="form-group col-md-offset-4 col-md-4">
+                        <a ><input type="submit" text="Add Category" class="btn btn-success btn-block" id="add"/></a>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+
+            <div class="row">
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--- footer -->
+<div class="text-center topAlign2">
+    <i class="white">Designed by leyeseyi edited by Tk codes</i>
+</div>
+<!--- end of footer -->
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/custom2.js"></script>
+</body>
+</html>

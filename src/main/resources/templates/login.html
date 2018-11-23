@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>login</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" type="text/css" rel="stylesheet">
+	<link href="css/fontawesome-all.min2" type="text/css" rel="stylesheet">
+    
+  </head>
+  <body id="login">
+    
+	<div class="container login-section">
+		<div class="row">
+			
+			<div class="col-md-offset-3 col-md-6 col-md-offset-3">
+				<div class="jumbotron col-md-12 col-sm-12 mx-auto" id="login"><!--CONTACT FORM-->
+					<h3 class="text-center">Log In</h3>
+					<h4 th:if="${userAdded}==true" class="alert alert-success"><br/> User Added </h4>
+					
+					<div th:if="${param.error}" class="alert alert-error">
+						Invalid username and password.
+						<p th:text="${param.error}"> </p>
+					</div>
+					<div th:if="${param.logout}" class="alert alert-success">
+						You have been logged out.
+						
+					</div>
+					<form th:action="@{/login}" action="/login" method="post">
+						<div class="form-row">
+							<div class="form-group col-md-12 col-sm-12">
+								<input type="text" class="form-control" id="username" name ="username" placeholder="Username" required />
+							 </div>
+							<div class="form-group col-md-12 col-sm-12">
+								<input type="password" class="form-control" id="password" name="password" placeholder="Password" required />
+							</div>
+							<div class="text-center mx-auto col-md-12 col-sm-12">
+								<button class="btn btn-primary col-md-12" type="submit"><i class="fa fa-sign-in-alt"></i>Log In</button>
+							</div> 
+							<div class="text-center mx-auto col-md-12 col-sm-12" style="margin-top:10px;">
+								<a th:href="@{/register}" class="btn btn-danger col-md-12"><i class="fa fa-user"></i>Sign up</a>
+							</div>
+						</div>
+					</form>
+
+				</div>
+				<!--- footer -->
+				<footer class="text-center mx-auto topAlign2">
+					<b><i class="white">created by Leyeseyi edited by Tk codes</i></b><br
+					
+				</footer>
+				<!--- end of footer -->
+			</div>
+			
+		</div>
+	</div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.js"></script>
+  </body>
+</html>
