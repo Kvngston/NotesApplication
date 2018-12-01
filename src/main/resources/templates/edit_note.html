@@ -78,7 +78,7 @@
 						<div class="input-group col-md-8">
 							<select name="category" required class="form-control">
 								<!--<div th:if="${#fields.hasErrors('noteCategory')}" th:errors="*{noteCategory}"></div>-->
-								<div class="alert alert-danger alert-info" th:if="${IncorrectCategory}"><p>Please pick a category </p></div>
+								<div class="alert alert-danger alert-info" th:if="${IncorrectCategory}"><p>Please pick a category</p></div>
 								<option value="" selected="selected" disabled> Please select an option... </option>
 								<option th:value="${Category.id}" th:text="${Category.category}" th:each="Category : ${noteCategoryList}" value="categories"></option>
 							</select>
