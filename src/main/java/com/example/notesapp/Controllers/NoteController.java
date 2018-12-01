@@ -74,17 +74,6 @@ public class NoteController {
         return "redirect:/list";
     }
 
-//    @RequestMapping(value = "/add", method = RequestMethod.POST)
-//    public String addCategory(@RequestParam("content")String content, Model model){
-//        NoteCategory noteCategory = new NoteCategory();
-//
-//        noteCategory.setCategory(content);
-//        noteCategoryRepository.save(noteCategory);
-//        model.addAttribute("categoryAdded", true);
-//
-//        return "index";
-//    }
-
     @RequestMapping(value = "/edit{noteId}", method = RequestMethod.GET)
     public String edit(@PathVariable(name = "noteId") Long noteId, Principal principal, Model model){
 
