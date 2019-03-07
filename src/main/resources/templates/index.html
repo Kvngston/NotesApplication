@@ -54,7 +54,7 @@
 						<hr style= "background-color: black;">
 						
 					<span id="error"> </span>
-						<form class="well well-sm shade" style="background-color: yellowgreen;" method='post' action="/addNote" th:action="@{/addNote}" th:object="${note}">
+						<form class="well well-sm shade" style="background-color: yellowgreen;" method='post' action="/addNote" th:action="@{addNote}" th:object="${note}">
 							<span th:if="${categoryAdded} == true">Category Added</span>
 							<div class="row">
 								<fieldset>
@@ -70,15 +70,15 @@
 									</div>
 									<div class="form-group">
 										<label class="control-label col-md-2" for="content"> *Notes </label>
-										<div class="input-group col-md-8">
-											<textarea name="content" rows="five" th:field="*{content}" class="form-control" placeholder="notes"></textarea>
+										<div id="content" class="input-group col-md-8">
+											<textarea name="content" rows="five" th:field="*{content}" class="form-control" placeholder="notes" required></textarea>
 											<span class="help-block">Your content here </span>
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="control-label col-md-2" for="content"> *Category </label>
+										<label class="control-label col-md-2" for="category"> *Category </label>
 										<div class="input-group col-md-8">
-											<select name="category" class="form-control">
+											<select name="category" id="category" class="form-control" required>
 												<option value="" selected="selected" disabled> Please select an option... </option>
 												<option th:value="${Category.id}" th:text="${Category.category}" th:each="Category : ${noteCategoryList}" value="categories"></option>
 											</select>
